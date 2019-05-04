@@ -11,10 +11,10 @@ public class AddTwoNumbers {
         l2.next.next = new ListNode(4);
 
 
-//        ListNode l1 = new ListNode(9);
-//        l1.next = new ListNode(9);
+//        AddTwoNumbers.ListNode l1 = new AddTwoNumbers.ListNode(9);
+//        l1.next = new AddTwoNumbers.ListNode(9);
 //
-//        ListNode l2 = new ListNode(1);
+//        AddTwoNumbers.ListNode l2 = new AddTwoNumbers.ListNode(1);
 
         Solution solution = new Solution();
         ListNode res = solution.addTwoNumbers(l1, l2);
