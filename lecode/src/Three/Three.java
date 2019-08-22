@@ -1,5 +1,6 @@
 package Three;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,7 +11,8 @@ Given a string, find the length of the longest substring without repeating chara
  */
 public class Three {
     public static void main(String[] args) {
-        String s = "bbbbbbb";
+        String s = " ";
+        System.out.println(s.length());
         System.out.println(new Solution().lengthOfLongestSubstring(s));
     }
 
@@ -19,22 +21,27 @@ public class Three {
 
 class Solution {
     public int lengthOfLongestSubstring(String s) {
-        int n = s.length();
-        int ans = 0;
-        for (int i = 0; i < n; i++)
-            for (int j = i + 1; j <= n; j++)
-                if (isUnique(s, i, j))
-                    ans = Math.max(ans, j - i);
-        return ans;
+        int maxLength = 0;
+        for (int i = 0; i <= s.length(); i++) {
+            for (int j = 0; j < i; j++) {
+                String subStr = s.substring(j, i);
+                if (!isRepeat(subStr)) {
+                    maxLength = Math.max(maxLength, subStr.length());
+                }
+
+            }
+        }
+        return maxLength;
     }
 
-    private boolean isUnique(String s, int start, int end) {
-        Set<Character> set = new HashSet<>();
-        for (int i = start; i < end; i++) {
-            char c = s.charAt(i);
-            if (set.contains(c)) return false;
-            set.add(c);
+    private boolean isRepeat(String str) {
+        Set<Character> characterSet = new HashSet<>();
+        for (int i = 0; i < str.length(); i++) {
+            if (characterSet.contains(str.charAt(i))) {
+                return true;
+            }
+            characterSet.add(str.charAt(i));
         }
-        return true;
+        return false;
     }
 }
